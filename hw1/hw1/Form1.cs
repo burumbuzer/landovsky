@@ -66,6 +66,9 @@ namespace hw1
             {
                 chart1.Series[0].Points.AddXY(i, intervals[i - 1]); // Рисуем столбики
             }
+
+            label3.Text = String.Format("min = {0:f5}", mn);
+            label4.Text = String.Format("max = {0:f5}", mx);
         }
     }
 }
