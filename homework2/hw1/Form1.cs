@@ -38,7 +38,7 @@ namespace hw1
                 double sum = 0;
                 for (int j = 0; j < 50; j++)
                     sum += rnd.NextDouble();
-                tests[i] = sum / 50;
+                tests[i] = sum;
             }
 
             Array.Sort(tests);
