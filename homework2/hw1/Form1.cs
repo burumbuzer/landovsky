@@ -63,10 +63,10 @@ namespace hw1
                 }
             }
 
-            chart1.ChartAreas[0].AxisX.Interval = Math.Round(step, 3);
+            chart1.ChartAreas[0].AxisX.Interval = Math.Round(step, 5);
             for (int i = 0; i < interval; i++)
             {
-                chart1.Series[0].Points.AddXY(Math.Round((left_bound + step*(i) + (step/2)), 3), intervals[i]); // Рисуем столбики
+                chart1.Series[0].Points.AddXY(Math.Round((left_bound + step*(i) + (step/2)), 5), intervals[i]); // Рисуем столбики
             }
 
             double mean = tests.Average(); // Среднее
@@ -87,13 +87,13 @@ namespace hw1
                 cmax = 0;
                 for (int j = i; j < arr_size; j++)
                 {
-                    if (Math.Round(tests[j], 3) == Math.Round(tests[i], 3)) cmax++;
+                    if (Math.Round(tests[j], 5) == Math.Round(tests[i], 5)) cmax++;
                 }
             }
 
             double disp = 0; // Поиск дисперсии
             for (int i = 0; i < arr_size; i++) {
-                disp = disp + Math.Pow((tests[i] - mean), 2);
+                disp += (tests[i] - mean) * (tests[i] - mean);
             }
             disp = disp / (Convert.ToDouble(arr_size));
 
