@@ -95,8 +95,7 @@ namespace hw1
             for (int i = 0; i < arr_size; i++) {
                 disp += (tests[i] - mean) * (tests[i] - mean);
             }
-            disp = disp / (Convert.ToDouble(arr_size));
-            disp = disp * (Convert.ToDouble(arr_size) / Convert.ToDouble(arr_size - 1));
+            disp = disp / Convert.ToDouble(arr_size - 1);
 
             lblMean.Text = $"Среднее: {mean:F5}";
             lblMediana.Text = $"Медиана: {median:F5}";

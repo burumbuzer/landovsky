@@ -26,14 +26,15 @@ namespace hw1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            double userMu = Convert.ToDouble(tbMu.Text);
+            double userSigma = Convert.ToDouble(tbSigma.Text);
+
             chart1.Series[0].Points.Clear(); // Очистка диаграммы
             chart1.ChartAreas[0].AxisX.Minimum = -10; // Зададим границы, чтобы увидеть разницу при изменении Сигмы
             chart1.ChartAreas[0].AxisX.Maximum = 10;
+            chart1.Series[0].Points.AddXY(userMu, 0);
 
             Random rnd = new Random();
-
-            double userMu = Convert.ToDouble(tbMu.Text);
-            double userSigma = Convert.ToDouble(tbSigma.Text);
 
             // Заполняем список "тестов" случайными значениями, записываем максимальное и минимальное значения
             int arr_size = Convert.ToInt32(textBox1.Text);
@@ -74,7 +75,7 @@ namespace hw1
                         countInColumn++;
                 }
                 Debug.WriteLine($"Точка {left + step / 2:F2}");
-                chart1.Series[0].Points.AddXY(Math.Round(left+step/2), countInColumn);
+                chart1.Series[0].Points.AddXY(Math.Round(left+step/2, 2), countInColumn);
             }
 
 
@@ -107,8 +108,7 @@ namespace hw1
             {
                 disp += (tests[i] - mean) * (tests[i] - mean);
             }
-            disp = disp / (Convert.ToDouble(arr_size));
-            disp = disp * (Convert.ToDouble(arr_size) / Convert.ToDouble(arr_size - 1));
+            disp = disp / Convert.ToDouble(arr_size - 1);
 
 
             lblMean.Text = $"Среднее: {mean:F5}";
