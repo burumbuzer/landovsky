@@ -26,6 +26,9 @@ namespace hw1
         private void button1_Click(object sender, EventArgs e)
         {
             chart1.Series[0].Points.Clear(); // Очистка диаграммы
+            chart1.Series[1].Points.AddXY(0.0, 1.0);
+            chart1.Series[1].Points.AddXY(2.0, 0.0);
+
 
             Random rnd = new Random();
             int arr_size = mlText.Lines.Length;
@@ -33,7 +36,6 @@ namespace hw1
             for (int i = 0; i < arr_size; i++)
             {
                 string s = mlText.Lines[i];
-                // s = s.Replace(',', '.');
                 tests[i] = Convert.ToDouble(s);
             }
             Array.Sort(tests);
